@@ -7,4 +7,4 @@ MailMan object creates a message and sends it to user email
 <br><br>
 This project is built using the following Modules in Python 3:
 <br>
-BeautifulSoup 4, Stmplib and Requests
+BeautifulSoup 4, Stmplib, Requests and Regex

@@ -4,5 +4,8 @@
 MailMan object creates a message and sends it to user email</p>
 <h3>This project is built using the following modules in Python 3:</h3>
 <ol>
-  <li>BeautifulSoup 4, Stmplib, Requests and Regex</li>
+  <li>BeautifulSoup 4</li>
+  <li>Stmplib</li>
+  <li>Requests</li>
+  <li>Regex</li>
 </ol>

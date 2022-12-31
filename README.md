@@ -1,0 +1,2 @@
+# amazon_prize_tracker
+This web scraping bot tracks the prize of products you wish to buy every 6 hours. It notifes the user with an email when prize is at it's best. 

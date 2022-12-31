@@ -5,6 +5,6 @@ PrizeTracker object takes a dictionary as an argument with keys as product urls 
 <br>
 MailMan object creates a message and sends it to user email
 <br><br>
-This project is built using the following Modules in Python 3:
+This project is built using the following modules in Python 3:
 <br>
 BeautifulSoup 4, Stmplib, Requests and Regex

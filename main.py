@@ -24,6 +24,7 @@ desired_prizes = {
     redmi_note_url: 18_000,
 }
 
+
 # <------Mailman Object------>
 class MailMan:
     def __init__(self):
@@ -35,7 +36,8 @@ class MailMan:
         with SMTP_SSL("smtp.gmail.com", port=465, context=self.cdc) as server:
             server.login(self.from_email, self.app_password)
             server.sendmail(self.from_email, to_email, msg=message)
-            
+
+
 # <------PrizeTracker Object------>
 class PrizeTracker:
     def __init__(self, requirements_dict: dict):
@@ -43,7 +45,7 @@ class PrizeTracker:
         self.product_name = ""
         self.clean_prize = ""
         self.desired_prize = 0
-        
+
     # <------Web Scarping Function------>
     def requests_func(self):
         for url, wanted_rate in self.product_details.items():
@@ -73,6 +75,7 @@ class PrizeTracker:
             )
         else:
             pass
+
 
 # <------Instance of a PrizeTracing Object------>
 prize_checking_bot = PrizeTracker(requirements_dict=desired_prizes)

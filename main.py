@@ -18,14 +18,14 @@ BROWSER_HEADERS = {
 }
 
 # <------Products and Desired Prices Dict------>
-desired_prizes = {
+desired_prices = {
     stickers_url: 336,
     novel_12rules_url: 315,
     redmi_note_url: 18_000,
 }
 
 
-# <------Mailman Object------>
+# <------Mailman Object------>r
 class MailMan:
     def __init__(self):
         self.cdc = ssl.create_default_context()
@@ -38,34 +38,34 @@ class MailMan:
             server.sendmail(self.from_email, to_email, msg=message)
 
 
-# <------PrizeTracker Object------>
-class PrizeTracker:
+# <------PriceTracker Object------>
+class PriceTracker:
     def __init__(self, requirements_dict: dict):
         self.product_details = requirements_dict
         self.product_name = ""
-        self.clean_prize = ""
-        self.desired_prize = 0
+        self.clean_price = ""
+        self.desired_price = 0
 
     # <------Web Scarping Function------>
     def requests_func(self):
         for url, wanted_rate in self.product_details.items():
-            self.desired_prize = wanted_rate
+            self.desired_price = wanted_rate
             response = requests.get(url, headers=BROWSER_HEADERS)
             website_html = response.text
             soup = BeautifulSoup(website_html, "html.parser")
             self.product_name = soup.find(id="productTitle").text
-            prize_of_product = soup.find(name="span", class_="a-price-whole")
-            self.clean_prize = prize_of_product.text.replace(',', '')
-            self.clean_prize = re.search(r"\d+",
-                                         self.clean_prize)  # extracting numbers from the data collected from website
-            self.prize_checking_func()  # triggers prize check and MailMan object if required
+            price_of_product = soup.find(name="span", class_="a-price-whole")
+            self.clean_price = price_of_product.text.replace(',', '')
+            self.clean_price = re.search(r"\d+",
+                                         self.clean_price)  # extracting numbers from the data collected from website
+            self.price_checking_func()  # triggers price check and MailMan object if required
 
-    # <------Prize Checking Function------>
-    def prize_checking_func(self):
-        if int(self.clean_prize[0]) <= self.desired_prize:
-            text_message = "The prize of {} is\nJUST {} INR \n\nBEST TIME TO BUY!".format(
+    # <------Price Checking Function------>
+    def price_checking_func(self):
+        if int(self.clean_price[0]) <= self.desired_price:
+            text_message = "The price of {} is\nJUST {} INR \n\nBEST TIME TO BUY!".format(
                 self.product_name.strip(),
-                self.clean_prize[0]
+                self.clean_price[0]
             )
             print(text_message)
             mailman = MailMan()
@@ -77,9 +77,9 @@ class PrizeTracker:
             pass
 
 
-# <------Instance of a PrizeTracing Object------>
-prize_checking_bot = PrizeTracker(requirements_dict=desired_prizes)
-prize_checking_bot.requests_func()
+# <------Instance of a PriceTracing Object------>
+price_checking_bot = PriceTracker(requirements_dict=desired_prices)
+price_checking_bot.requests_func()
 
-# THIS CODE SHOULD BE EXECUTED VERY 6 HOURS IN THE CLOUD TO CHECK THE PRIZE
+# THIS CODE SHOULD BE EXECUTED VERY 6 HOURS IN THE CLOUD TO CHECK THE PricE
 # I USED 'PYTHONANYWHERE' TO RUN IT VERY 6 HOURS
